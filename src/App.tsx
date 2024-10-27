@@ -1,8 +1,8 @@
-import { FC, useRef, useState, DragEvent } from 'react';
-import styles from './App.module.scss';
+import { useRef, useState, DragEvent } from 'react';
+import styles from './app.module.scss';
 import { useHorizontalScroll } from "./useHorizontalScroll.ts";
 
-interface FileDropzoneProps {
+interface Props {
   onChange?: (files: File[]) => void
   previewImages?: IPreview[]
   onRemovePreview?: (file: IPreview) => void
@@ -14,7 +14,7 @@ interface IPreview {
   src: string
 }
 
-export const App: FC<FileDropzoneProps> = ({ onChange, previewImages, onRemovePreview }) => {
+export const App = ({ onChange, previewImages, onRemovePreview }: Props) => {
   const scrollRef = useHorizontalScroll<HTMLDivElement>()
 
   const inputRef = useRef<HTMLInputElement>(null)
